@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MedTech 360 | Evalueserve</title>
-  <meta name="description" content="Evalueserve MedTech 360 - Competitive Intelligence and Primary Market Research workspace." />
-  <link rel="stylesheet" href="styles-base.css?v=20260925a" />
-  <link rel="stylesheet" href="styles-app.css?v=20260925a" />
-  <link rel="stylesheet" href="styles-pages.css?v=20260925a" />
+  <title>Abbott 360 | Abbott Intelligence Hub</title>
+  <meta name="description" content="Abbott Intelligence Hub - Competitive Intelligence and Primary Market Research workspace." />
+  <link rel="stylesheet" href="styles-base.css?v=20261013-abbott" />
+  <link rel="stylesheet" href="styles-app.css?v=20261013-abbott" />
+  <link rel="stylesheet" href="styles-pages.css?v=20261013-abbott" />
+  <link rel="stylesheet" href="styles-abbott.css?v=20261013-abbott" />
+  <link rel="icon" href="assets/abbott-symbol.svg" type="image/svg+xml" />
 </head>
 <body>
 <section id="loginScreen" class="auth-screen">
   <div class="auth-visual">
-    <div class="ev-logo">EVALUESERVE<span>.</span></div>
-    <div class="auth-copy">
-      <div class="kicker" style="color:#f4a9c4">Life Sciences & Healthcare</div>
-      <h1>MedTech <em>360</em></h1>
-      <p>A role-based intelligence workspace connecting industry research, competitive intelligence, primary market research, domain expertise, and decision-ready analytics for MedTech teams.</p>
+    <div class="abbott-brand" aria-label="Abbott"><img src="assets/abbott-symbol.svg" alt="" width="38" height="38" /><span>Abbott</span></div>
+    <div class="auth-copy"><div class="auth-eyebrow">Abbott Intelligence Hub</div>
+      <div class="kicker" style="color:#8ee1f5">Life Sciences & Healthcare</div>
+      <h1>Abbott <em>360</em></h1>
+      <p>A clearer view. A healthier tomorrow. Connect market intelligence, clinical insight, and customer research to make your next decision with confidence.</p>
     </div>
     <div class="domain-pills">
       <span>Immunodiagnostics</span><span>Diabetes Monitoring & BGM</span><span>Eye Health</span><span>Orthopedics & Sports medicine</span><span>Advanced wound management</span><span>Clinical laboratory services</span>
@@ -26,20 +28,20 @@
     <div class="auth-card">
       <div class="badge"><span class="dot"></span> Secure intelligence workspace</div>
       <h2>Welcome back</h2>
-      <p>Sign in to access MedTech 360. Enterprise SSO and credential access are represented in this prototype.</p>
+      <p>Sign in to access Abbott 360. Enterprise SSO and credential access are represented in this prototype.</p>
       <button class="sso-btn" onclick="goRoleSelection()">◆ &nbsp; Continue with Enterprise SSO</button>
       <div class="divider">or sign in with credentials</div>
-      <div class="field"><label>Work email</label><input id="email" type="email" value="demo@evalueserve.com" /></div>
-      <div class="field"><label>Password</label><input id="password" type="password" value="MedTech360" /></div>
-      <button class="primary-btn" onclick="credentialLogin()">Sign in to MedTech 360</button>
-      <div class="demo-note"><strong>Prototype access:</strong> demo@evalueserve.com / MedTech360<br/>Authentication is simulated in the static frontend.</div>
+      <div class="field"><label for="email">Work email</label><input id="email" type="email" value="demo@abbott360.example" /></div>
+      <div class="field"><label for="password">Password</label><input id="password" type="password" value="Abbott360" /></div>
+      <button class="primary-btn" onclick="credentialLogin()">Sign in to Abbott 360</button>
+      <div class="demo-note"><strong>Prototype access:</strong> demo@abbott360.example / Abbott360<br/>Authentication is simulated in the static frontend.</div>
     </div>
   </div>
 </section>
 
 <section id="roleScreen" class="role-screen hidden">
   <div class="role-top">
-    <div class="ev-logo">EVALUESERVE<span>.</span></div>
+    <div class="abbott-brand" aria-label="Abbott"><img src="assets/abbott-symbol.svg" alt="" width="38" height="38" /><span>Abbott</span></div>
     <button class="secondary-btn" onclick="logout()">Sign out</button>
   </div>
   <div class="role-wrap onboarding-wrap">
@@ -50,7 +52,7 @@
     <div class="role-title">
       <div class="kicker">Personalize your intelligence experience</div>
       <h1>What is your role?</h1>
-      <p>Your role determines which decisions, signals, modules and assistant responses are prioritized throughout MedTech 360.</p>
+      <p>Your role determines which decisions, signals, modules and assistant responses are prioritized throughout Abbott 360.</p>
     </div>
     <div class="business-role-grid">
       <article class="role-card business-role-card"><div class="role-icon">EL</div><h3>Executive Leadership Team</h3><p>Enterprise growth, portfolio performance, strategic risks, critical competitive moves and decision-ready executive signals.</p><ul><li>Executive decision cockpit</li><li>Growth & risk priorities</li><li>Cross-domain strategic synthesis</li></ul><button onclick="chooseBusinessRole('Executive Leadership Team')">Continue as Executive Leadership</button></article>
@@ -65,7 +67,7 @@
 <section id="domainScreen" class="role-screen hidden">
   <div class="role-top">
     <button class="secondary-btn" onclick="goBackToRole()">← Back</button>
-    <div class="ev-logo">EVALUESERVE<span>.</span></div>
+    <div class="abbott-brand" aria-label="Abbott"><img src="assets/abbott-symbol.svg" alt="" width="38" height="38" /><span>Abbott</span></div>
     <button class="secondary-btn" onclick="logout()">Sign out</button>
   </div>
   <div class="role-wrap onboarding-wrap">
@@ -92,7 +94,7 @@
 <section id="accessScreen" class="role-screen hidden">
   <div class="role-top">
     <button class="secondary-btn" onclick="goBackToDomain()">← Back</button>
-    <div class="ev-logo">EVALUESERVE<span>.</span></div>
+    <div class="abbott-brand" aria-label="Abbott"><img src="assets/abbott-symbol.svg" alt="" width="38" height="38" /><span>Abbott</span></div>
     <button class="secondary-btn" onclick="logout()">Sign out</button>
   </div>
   <div class="role-wrap onboarding-wrap">
@@ -102,7 +104,7 @@
     </div>
     <div class="role-title">
       <div class="kicker">Set workspace permissions</div>
-      <h1>How will you use MedTech 360?</h1>
+      <h1>How will you use Abbott 360?</h1>
       <p>Access type controls the actions available in the workspace. Your selected business role and domain continue to determine the content you see.</p>
     </div>
     <div class="role-grid access-role-grid">
@@ -115,7 +117,7 @@
 
 <section id="appScreen" class="app hidden">
   <aside class="sidebar">
-    <div class="side-brand"><div class="ev-logo">EVALUESERVE<span>.</span></div><small>MedTech 360 Intelligence Hub</small></div>
+    <div class="side-brand"><div class="abbott-brand" aria-label="Abbott"><img src="assets/abbott-symbol.svg" alt="" width="38" height="38" /><span>Abbott</span></div><small>Abbott Intelligence Hub</small></div>
     <div class="workspace-pill">Workspace lens<strong id="sideBusinessRole">Executive Leadership Team</strong><span id="sideDomain">Immunodiagnostics</span><em id="sideAccessType">Viewer access</em></div>
     <div class="nav-label">Workspace</div>
     <button id="navExecutive" class="nav-btn active" onclick="navigate('executive')"><span class="nav-ico">EH</span><span>Executive Hub</span></button>
@@ -127,16 +129,16 @@
     <div id="pmrSubmenu" class="submenu"></div>
     <div class="nav-label">Quick actions</div>
     <button id="navRepository" class="nav-btn" onclick="navigate('repository')"><span class="nav-ico">KR</span><span>Knowledge Repository</span></button>
-    <div class="sidebar-bottom"><button onclick="logout()">Log out of MedTech 360</button></div>
+    <div class="sidebar-bottom"><button onclick="logout()">Log out of Abbott 360</button></div>
   </aside>
   <main class="main">
     <header class="topbar">
-      <div class="top-left">
-        <div class="crumb"><small id="breadcrumbSmall">MedTech 360 / Executive Hub</small><strong id="breadcrumbTitle">Daily decision center</strong></div>
+      <div class="top-left"><div class="abbott-brand" aria-label="Abbott"><img src="assets/abbott-symbol.svg" alt="" width="38" height="38" /><span>Abbott</span></div>
+        <div class="crumb"><small id="breadcrumbSmall">Abbott 360 / Executive Hub</small><strong id="breadcrumbTitle">Daily decision center</strong></div>
       </div>
       <div class="top-actions">
-        <select id="topDomainSelect" class="top-domain" onchange="switchDomain(this.value)"></select>
-        <div class="search-box"><input id="globalSearch" onkeydown="if(event.key==='Enter')runGlobalSearch()" placeholder="Search capabilities, players, topics..." /></div>
+        <select aria-label="Workspace domain" id="topDomainSelect" class="top-domain" onchange="switchDomain(this.value)"></select>
+        <div class="search-box"><input id="globalSearch" onkeydown="if(event.key==='Enter')runGlobalSearch()" aria-label="Search intelligence" placeholder="Search intelligence…" /></div>
         <button id="accessActionBtn" class="access-action-btn" onclick="handleAccessAction()">Read-only mode</button><button class="logout-btn" onclick="logout()">Log out</button>
         <div class="avatar" id="avatarLabel">AB</div>
       </div>
@@ -145,37 +147,37 @@
   </main>
 </section>
 <div id="toast" class="toast"></div>
-<script src="data-base.js?v=20260925a"></script>
-<script src="data-domains-1.js?v=20260925a"></script>
-<script src="data-domains-2.js?v=20260925a"></script>
-<script src="data-domains-3.js?v=20260925a"></script>
-<script src="data-evidence.js?v=20260925a"></script>
-<script src="data-enrichment.js?v=20260925a"></script>
-<script src="data-executive.js?v=20260925a"></script>
-<script src="data-executive-strategy.js?v=20260925a"></script>
-<script src="data-executive-daily.js?v=20260925a"></script>
-<script src="data-ci.js?v=20260925a"></script>
-<script src="data-pmr.js?v=20260925a"></script>
-<script src="data-pmr-demo.js?v=20260925a"></script>
-<script src="data-pmr-demo-v2.js?v=20260925a"></script>
-<script src="data-pageviews.js?v=20260925a"></script>
-<script src="data-company-profiles-1.js?v=20260925a"></script>
-<script src="data-company-profiles-2.js?v=20260925a"></script>
-<script src="data-company-profiles-3.js?v=20260925a"></script>
-<script src="data-company-profiles-4.js?v=20260925a"></script>
-<script src="data-ci-intelligence.js?v=20260925a"></script>
-<script src="data-ci-intelligence-extra.js?v=20260925a"></script>
-<script src="data-ci-intelligence-more-1.js?v=20260925a"></script>
-<script src="data-ci-intelligence-more-2.js?v=20260925a"></script>
-<script src="app-core.js?v=20260925a"></script>
-<script src="app-executive.js?v=20260925a"></script>
-<script src="app-executive-hub.js?v=20260925a"></script>
-<script src="app-company-profiles.js?v=20260925a"></script>
-<script src="app-ci-intelligence.js?v=20260925a"></script>
-<script src="app-ci-intelligence-v2.js?v=20260925a"></script>
-<script src="app-pmr-intelligence.js?v=20260925a"></script>
-<script src="app-pmr-intelligence-v2.js?v=20260925a"></script>
-<script src="app-knowledge-repository.js?v=20260925a"></script>
-<script src="app-subpages.js?v=20260925a"></script>
+<script src="data-base.js?v=20261013-abbott"></script>
+<script src="data-domains-1.js?v=20261013-abbott"></script>
+<script src="data-domains-2.js?v=20261013-abbott"></script>
+<script src="data-domains-3.js?v=20261013-abbott"></script>
+<script src="data-evidence.js?v=20261013-abbott"></script>
+<script src="data-enrichment.js?v=20261013-abbott"></script>
+<script src="data-executive.js?v=20261013-abbott"></script>
+<script src="data-executive-strategy.js?v=20261013-abbott"></script>
+<script src="data-executive-daily.js?v=20261013-abbott"></script>
+<script src="data-ci.js?v=20261013-abbott"></script>
+<script src="data-pmr.js?v=20261013-abbott"></script>
+<script src="data-pmr-demo.js?v=20261013-abbott"></script>
+<script src="data-pmr-demo-v2.js?v=20261013-abbott"></script>
+<script src="data-pageviews.js?v=20261013-abbott"></script>
+<script src="data-company-profiles-1.js?v=20261013-abbott"></script>
+<script src="data-company-profiles-2.js?v=20261013-abbott"></script>
+<script src="data-company-profiles-3.js?v=20261013-abbott"></script>
+<script src="data-company-profiles-4.js?v=20261013-abbott"></script>
+<script src="data-ci-intelligence.js?v=20261013-abbott"></script>
+<script src="data-ci-intelligence-extra.js?v=20261013-abbott"></script>
+<script src="data-ci-intelligence-more-1.js?v=20261013-abbott"></script>
+<script src="data-ci-intelligence-more-2.js?v=20261013-abbott"></script>
+<script src="app-core.js?v=20261013-abbott"></script>
+<script src="app-executive.js?v=20261013-abbott"></script>
+<script src="app-executive-hub.js?v=20261013-abbott"></script>
+<script src="app-company-profiles.js?v=20261013-abbott"></script>
+<script src="app-ci-intelligence.js?v=20261013-abbott"></script>
+<script src="app-ci-intelligence-v2.js?v=20261013-abbott"></script>
+<script src="app-pmr-intelligence.js?v=20261013-abbott"></script>
+<script src="app-pmr-intelligence-v2.js?v=20261013-abbott"></script>
+<script src="app-knowledge-repository.js?v=20261013-abbott"></script>
+<script src="app-subpages.js?v=20261013-abbott"></script>
 </body>
 </html>

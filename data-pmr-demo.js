@@ -1,4 +1,4 @@
-/* Synthetic PMR research portfolio for MedTech 360 prototype.
+/* Synthetic PMR research portfolio for Abbott 360 prototype.
    All respondent-level values, quotations and project results are demo data. */
 
 window.PMR_METHOD_SOURCES=[

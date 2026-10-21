@@ -64,14 +64,14 @@ function ciLineChart(points,labelKey,valueKey){
   const x=i=>pL+i*(W-pL-pR)/(points.length-1),y=v=>pT+(max-v)*(H-pT-pB)/(max-min||1);
   const coords=points.map((p,i)=>[x(i),y(Number(p[valueKey]))]);
   return '<div class="ci-line-chart"><svg viewBox="0 0 '+W+' '+H+'">'+
-    [0,1,2,3].map(i=>{const yy=pT+i*(H-pT-pB)/3;return '<line x1="'+pL+'" y1="'+yy+'" x2="'+(W-pR)+'" y2="'+yy+'" stroke="#eee8ef"/>'}).join('')+
-    '<polyline points="'+coords.map(p=>p.join(",")).join(" ")+'" fill="none" stroke="#4a2351" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+
-    coords.map((pt,i)=>'<circle cx="'+pt[0]+'" cy="'+pt[1]+'" r="5" fill="#e8005a" stroke="#fff" stroke-width="2"/><text x="'+pt[0]+'" y="'+(pt[1]-9)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#4a2351">'+points[i][valueKey]+'</text><text x="'+pt[0]+'" y="'+(H-13)+'" text-anchor="middle" font-size="10" font-weight="700" fill="#756b78">'+esc(points[i][labelKey])+'</text>').join('')+
+    [0,1,2,3].map(i=>{const yy=pT+i*(H-pT-pB)/3;return '<line x1="'+pL+'" y1="'+yy+'" x2="'+(W-pR)+'" y2="'+yy+'" stroke="#e8edef"/>'}).join('')+
+    '<polyline points="'+coords.map(p=>p.join(",")).join(" ")+'" fill="none" stroke="#003b5c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+
+    coords.map((pt,i)=>'<circle cx="'+pt[0]+'" cy="'+pt[1]+'" r="5" fill="#0076a8" stroke="#fff" stroke-width="2"/><text x="'+pt[0]+'" y="'+(pt[1]-9)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#003b5c">'+points[i][valueKey]+'</text><text x="'+pt[0]+'" y="'+(H-13)+'" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7478">'+esc(points[i][labelKey])+'</text>').join('')+
     '</svg></div>';
 }
 function ciDonut(items){
   if(!items.length)return '<div class="ci-empty">No category data for this selection.</div>';
-  const total=items.reduce((s,x)=>s+x.value,0)||1,colors=["#4a2351","#e8005a","#8c5a92","#ed6a9a","#71607a","#baa4bf","#8d8291","#d7cad9"];
+  const total=items.reduce((s,x)=>s+x.value,0)||1,colors=["#003b5c","#0076a8","#5a8092","#ed6a9a","#6b757a","#a8b7bf","#828c91","#cad4d9"];
   let cur=0;const grad=items.map((x,i)=>{const a=cur;cur+=x.value/total*100;return colors[i%colors.length]+' '+a+'% '+cur+'%'}).join(",");
   return '<div class="ci-donut-wrap"><div class="ci-donut" style="background:conic-gradient('+grad+')"><div><b>'+total+'</b><span>Total signals</span></div></div><div class="ci-donut-legend">'+items.map((x,i)=>'<div><i style="background:'+colors[i%colors.length]+'"></i><span>'+esc(x.label)+'</span><b>'+x.value+'</b></div>').join('')+'</div></div>';
 }
@@ -315,8 +315,8 @@ function ciStrategyScore2(p,key){
 function ciPositionMatrix(profiles){
   const W=650,H=360,p=48;
   const points=profiles.map(x=>({p:x,x:ciStrategyScore2(x,"digital"),y:ciStrategyScore2(x,"rd")}));
-  return '<div class="ci-position-map"><svg viewBox="0 0 '+W+' '+H+'"><line x1="'+p+'" y1="'+(H/2)+'" x2="'+(W-p)+'" y2="'+(H/2)+'" stroke="#ded5e0"/><line x1="'+(W/2)+'" y1="'+p+'" x2="'+(W/2)+'" y2="'+(H-p)+'" stroke="#ded5e0"/><text x="'+(W/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="11" fill="#756b78">Digital / connected strategy →</text><text x="15" y="'+(H/2)+'" transform="rotate(-90 15 '+(H/2)+')" text-anchor="middle" font-size="11" fill="#756b78">Innovation / R&D →</text>'+
-    points.map(o=>{const xx=p+(o.x-50)/50*(W-2*p),yy=H-p-(o.y-50)/50*(H-2*p);return '<g><circle cx="'+xx+'" cy="'+yy+'" r="13" fill="#e8005a" fill-opacity=".16" stroke="#e8005a" stroke-width="2"/><circle cx="'+xx+'" cy="'+yy+'" r="5" fill="#e8005a"/><text x="'+xx+'" y="'+(yy-18)+'" text-anchor="middle" font-size="10" font-weight="800" fill="#4a2351">'+esc(o.p.name)+'</text></g>'}).join('')+'</svg><p class="ci-chart-note">Directional analyst map derived from loaded strategy evidence; not an external ranking.</p></div>';
+  return '<div class="ci-position-map"><svg viewBox="0 0 '+W+' '+H+'"><line x1="'+p+'" y1="'+(H/2)+'" x2="'+(W-p)+'" y2="'+(H/2)+'" stroke="#d5dce0"/><line x1="'+(W/2)+'" y1="'+p+'" x2="'+(W/2)+'" y2="'+(H-p)+'" stroke="#d5dce0"/><text x="'+(W/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="11" fill="#6b7478">Digital / connected strategy →</text><text x="15" y="'+(H/2)+'" transform="rotate(-90 15 '+(H/2)+')" text-anchor="middle" font-size="11" fill="#6b7478">Innovation / R&D →</text>'+
+    points.map(o=>{const xx=p+(o.x-50)/50*(W-2*p),yy=H-p-(o.y-50)/50*(H-2*p);return '<g><circle cx="'+xx+'" cy="'+yy+'" r="13" fill="#0076a8" fill-opacity=".16" stroke="#0076a8" stroke-width="2"/><circle cx="'+xx+'" cy="'+yy+'" r="5" fill="#0076a8"/><text x="'+xx+'" y="'+(yy-18)+'" text-anchor="middle" font-size="10" font-weight="800" fill="#003b5c">'+esc(o.p.name)+'</text></g>'}).join('')+'</svg><p class="ci-chart-note">Directional analyst map derived from loaded strategy evidence; not an external ranking.</p></div>';
 }
 function renderStrategyPositioningPage(){
   const s=ciIntelState["strategy-positioning"],profiles=ciProfiles(),names=ciNames(),regions=ciUnique(profiles.flatMap(p=>p.regions||[])),lensMap={"All strategic lenses":null,"Business":"business","Product":"product","Channel":"channel","Geographic":"geographic","Digital":"digital","R&D":"rd","Expansion":"expansion"};

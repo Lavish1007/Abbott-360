@@ -2,7 +2,7 @@ function renderSegmentOverview(type){
   const list=type==='ci'?CI_SUBSEGMENTS:PMR_SUBSEGMENTS;
   const name=type==='ci'?'Competitive Intelligence':'Primary Market Research';
   const d=DOMAIN_DATA[currentDomain],en=enrichment();
-  $('breadcrumbSmall').textContent='MedTech 360 / '+name;
+  $('breadcrumbSmall').textContent='Abbott 360 / '+name;
   $('breadcrumbTitle').textContent=currentDomain+' — '+name;
   const theme=globalFilters.theme==='All themes'?'all priority themes':globalFilters.theme;
   $('pageContent').innerHTML=
@@ -156,7 +156,7 @@ function runGlobalSearch(){
   const q=$('globalSearch').value.trim().toLowerCase();if(!q)return;
   const all=[...CI_SUBSEGMENTS.map(x=>({...x,type:'ci'})),...PMR_SUBSEGMENTS.map(x=>({...x,type:'pmr'}))];
   const hits=all.filter(x=>(x.title+' '+x.overview+' '+x.questions.join(' ')).toLowerCase().includes(q));
-  $('breadcrumbSmall').textContent='MedTech 360 / Search';$('breadcrumbTitle').textContent='Results for “'+q+'”';
+  $('breadcrumbSmall').textContent='Abbott 360 / Search';$('breadcrumbTitle').textContent='Results for “'+q+'”';
   $('pageContent').innerHTML='<div class="page-head"><div class="title-wrap"><div class="kicker">Global search</div><h1>Search results</h1><p>'+hits.length+' capability pages matched “'+esc(q)+'” in the current platform taxonomy.</p></div></div>'+activeFilterNote()+
     (hits.length?'<div class="capability-grid">'+hits.map(x=>'<button class="cap-card" onclick="navigate(\''+x.type+'\',\''+x.id+'\')"><div class="cap-icon">'+x.icon+'</div><h3>'+esc(x.title)+'</h3><p>'+esc(x.overview)+'</p><span class="go">Open page →</span></button>').join('')+'</div>':'<div class="empty-search">No capability page matched this search. Try terms such as pricing, workflow, competitor, regulatory, customer, usability, launch, concept, segmentation, social or adoption.</div>');
 }

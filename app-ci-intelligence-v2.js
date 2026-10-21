@@ -30,7 +30,7 @@ function ci2Heatmap(rowLabels,colLabels,getValue,note){
   if(!rowLabels.length||!colLabels.length)return '<div class="ci-empty">No matrix data under the current filters.</div>';
   const vals=[];rowLabels.forEach(r=>colLabels.forEach(c=>vals.push(getValue(r,c)||0)));const max=Math.max(...vals,1);
   return '<div class="table-scroll"><table class="data-table ci2-heat"><thead><tr><th></th>'+colLabels.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr></thead><tbody>'+
-    rowLabels.map(r=>'<tr><td><strong>'+esc(r)+'</strong></td>'+colLabels.map(c=>{const v=getValue(r,c)||0,a=.08+.54*(v/max);return '<td><span style="background:rgba(232,0,90,'+a.toFixed(2)+')">'+v+'</span></td>'}).join('')+'</tr>').join('')+
+    rowLabels.map(r=>'<tr><td><strong>'+esc(r)+'</strong></td>'+colLabels.map(c=>{const v=getValue(r,c)||0,a=.08+.54*(v/max);return '<td><span style="background:rgba(0,163,224,'+a.toFixed(2)+')">'+v+'</span></td>'}).join('')+'</tr>').join('')+
     '</tbody></table></div>'+(note?'<p class="ci-chart-note">'+esc(note)+'</p>':'');
 }
 function ci2SourceMix(news){

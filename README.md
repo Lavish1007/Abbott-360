@@ -1,6 +1,6 @@
-# MedTech 360
+# Abbott 360
 
-MedTech 360 is an Evalueserve-themed, static interactive prototype for MedTech Competitive Intelligence (CI) and Primary Market Research (PMR). It is designed to work directly in a browser and can be hosted on GitHub Pages.
+Abbott 360 is an Abbott-themed, static interactive prototype for MedTech Competitive Intelligence (CI) and Primary Market Research (PMR). It is designed to work directly in a browser and can be hosted on GitHub Pages.
 
 ## User journey
 
@@ -53,7 +53,7 @@ Factual KPI cards and research statements are tied to external sources listed in
 ## Files
 
 - `index.html` – three-stage experience shell and app structure
-- `styles-base.css`, `styles-app.css`, `styles-pages.css` – Evalueserve-inspired responsive design system and page layouts
+- `styles-base.css`, `styles-app.css`, `styles-pages.css` – Abbott-inspired responsive design system and page layouts
 - `data-base.js`, `data-domains-1.js` ... `data-domains-3.js` – domain research content
 - `data-evidence.js` – current public-source evidence anchors for all six domains
 - `data-enrichment.js` – market forecasts, competitor universes, current signals, domain themes, and domain-specific CI / PMR lenses
@@ -64,14 +64,12 @@ Factual KPI cards and research statements are tied to external sources listed in
 
 ## Prototype credentials
 
-- Email: `demo@evalueserve.com`
-- Password: `MedTech360`
+- Email: `demo@abbott360.example`
+- Password: `Abbott360`
 
 ## GitHub Pages
 
-The repository is published from the `gh-pages` branch. The expected URL is:
-
-`https://atanubarik.github.io/MedTech-360/`
+The repository is published from the `gh-pages` branch. The deployment URL is supplied by GitHub under **Settings → Pages** for this repository.
 
 If GitHub Pages needs to be configured manually, open **Settings → Pages**, choose **Deploy from a branch**, select **gh-pages**, choose **/(root)**, and save.
 
@@ -236,7 +234,13 @@ The platform navigation now separates the executive landing experience from the 
 - **Knowledge Repository** is now a dedicated document and evidence hub with domain-specific internal assets, direct source links, local upload UI and prototype connectors for OneDrive, Google Drive, Google Cloud Storage, Contify, Sprinklr, PubMed, Google Scholar, PharmaTell and AlphaSense.
 
 ### Executive intelligence assistant
-The Executive Hub assistant allows the user to select team, information need and region before asking a business question. In the static GitHub Pages prototype it synthesizes source-linked public intelligence already ingested into MedTech 360 with the synthetic PMR dataset. Live internet retrieval and live enterprise-source ingestion require secured backend search, OAuth and AI connectors.
+The Executive Hub assistant allows the user to select team, information need and region before asking a business question. In the static GitHub Pages prototype it synthesizes source-linked public intelligence already ingested into Abbott 360 with the synthetic PMR dataset. Live internet retrieval and live enterprise-source ingestion require secured backend search, OAuth and AI connectors.
 
 ### Knowledge Repository prototype behavior
 Local file selection is browser-session only in the static frontend. Connector buttons demonstrate the target experience and do not authenticate to third-party systems until production APIs / enterprise connectors are wired.
+
+## Abbott theme
+
+Abbott 360 uses the Abbott Intelligence Hub identity, a blue-and-navy light theme, and locally hosted Inter typography. Shared styling lives in `styles-abbott.css`; chart colors are aligned in the renderers. The Abbott symbol and font provenance are documented in `assets/README.md`. Existing CI, PMR, search, industry analytics, and knowledge repository views share the theme; separate profile, settings, and admin screens are not implemented in this prototype.
+
+Run locally with `python3 -m http.server 8000` (Windows: `py -m http.server 8000`) from this directory. Open `http://localhost:8000`.

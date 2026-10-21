@@ -21,9 +21,9 @@ function applyDomainAliases(){
   Object.keys(DOMAIN_NAME_MAP).forEach(oldName=>{if(DOMAIN_DATA[oldName])delete DOMAIN_DATA[oldName];});
 }
 applyDomainAliases();
-let currentRole = localStorage.getItem('medtech360Role') || 'Viewer';
-let currentBusinessRole = localStorage.getItem('medtech360BusinessRole') || 'Executive Leadership Team';
-let storedDomain = localStorage.getItem('medtech360Domain');
+let currentRole = localStorage.getItem('abbott360Role') || 'Viewer';
+let currentBusinessRole = localStorage.getItem('abbott360BusinessRole') || 'Executive Leadership Team';
+let storedDomain = localStorage.getItem('abbott360Domain');
 let currentDomain = DOMAIN_NAME_MAP[storedDomain] || storedDomain || Object.keys(DOMAIN_DATA)[0];
 let currentPage = {type:'executive'};
 let globalFilters = {company:'All companies', theme:'All themes', dataset:'All datasets'};
@@ -31,16 +31,16 @@ let globalFilters = {company:'All companies', theme:'All themes', dataset:'All d
 function $(id){return document.getElementById(id)}
 function esc(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function showToast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
-function credentialLogin(){if($('email').value.trim()==='demo@evalueserve.com'&&$('password').value==='MedTech360')goRoleSelection();else showToast('Use the prototype credentials shown below the form.')}
+function credentialLogin(){if($('email').value.trim()==='demo@abbott360.example'&&$('password').value==='Abbott360')goRoleSelection();else showToast('Use the prototype credentials shown below the form.')}
 function hideOnboarding(){['roleScreen','domainScreen','accessScreen'].forEach(id=>{if($(id))$(id).classList.add('hidden')})}
 function goRoleSelection(){hideOnboarding();$('loginScreen').classList.add('hidden');$('roleScreen').classList.remove('hidden')}
-function chooseBusinessRole(role){currentBusinessRole=role;localStorage.setItem('medtech360BusinessRole',role);$('roleScreen').classList.add('hidden');$('domainScreen').classList.remove('hidden');renderDomainSelectors()}
+function chooseBusinessRole(role){currentBusinessRole=role;localStorage.setItem('abbott360BusinessRole',role);$('roleScreen').classList.add('hidden');$('domainScreen').classList.remove('hidden');renderDomainSelectors()}
 function goBackToRole(){hideOnboarding();$('roleScreen').classList.remove('hidden')}
-function continueToAccess(){localStorage.setItem('medtech360Domain',currentDomain);$('domainScreen').classList.add('hidden');$('accessScreen').classList.remove('hidden')}
+function continueToAccess(){localStorage.setItem('abbott360Domain',currentDomain);$('domainScreen').classList.add('hidden');$('accessScreen').classList.remove('hidden')}
 function goBackToDomain(){hideOnboarding();$('domainScreen').classList.remove('hidden');renderDomainSelectors()}
-function chooseAccessType(role){currentRole=role;localStorage.setItem('medtech360Role',role);localStorage.setItem('medtech360BusinessRole',currentBusinessRole);localStorage.setItem('medtech360Domain',currentDomain);hideOnboarding();$('appScreen').classList.remove('hidden');initializeApp();navigate('executive')}
+function chooseAccessType(role){currentRole=role;localStorage.setItem('abbott360Role',role);localStorage.setItem('abbott360BusinessRole',currentBusinessRole);localStorage.setItem('abbott360Domain',currentDomain);hideOnboarding();$('appScreen').classList.remove('hidden');initializeApp();navigate('executive')}
 function chooseRole(role){chooseAccessType(role)}
-function logout(){localStorage.removeItem('medtech360Role');localStorage.removeItem('medtech360BusinessRole');localStorage.removeItem('medtech360Domain');$('appScreen').classList.add('hidden');hideOnboarding();$('loginScreen').classList.remove('hidden');currentPage={type:'executive'};window.location.hash=''}
+function logout(){localStorage.removeItem('abbott360Role');localStorage.removeItem('abbott360BusinessRole');localStorage.removeItem('abbott360Domain');$('appScreen').classList.add('hidden');hideOnboarding();$('loginScreen').classList.remove('hidden');currentPage={type:'executive'};window.location.hash=''}
 
 function enrichment(){return (window.DOMAIN_ENRICHMENT&&DOMAIN_ENRICHMENT[currentDomain])||{}}
 function renderDomainSelectors(){
@@ -75,7 +75,7 @@ function handleAccessAction(){
 }
 function businessRoleConfig(){return BUSINESS_ROLES[currentBusinessRole]||BUSINESS_ROLES["Executive Leadership Team"]}
 function switchDomain(name){
-  currentDomain=name;localStorage.setItem('medtech360Domain',name);$('sideDomain').textContent=name;
+  currentDomain=name;localStorage.setItem('abbott360Domain',name);$('sideDomain').textContent=name;
   globalFilters.company='All companies';globalFilters.theme='All themes';
   refreshGlobalFilters();renderCurrentPage()
 }
@@ -170,7 +170,7 @@ function renderCurrentPage(){
   else renderSubsegment(currentPage.type,currentPage.id)
 }
 
-function lineChart(values,labels){const W=560,H=210,p=28,max=Math.max(...values)+5,min=Math.min(...values)-5;const pts=values.map((v,i)=>{const x=p+i*(W-p*2)/(values.length-1),y=H-p-(v-min)*(H-p*2)/(max-min);return [x,y]}),poly=pts.map(a=>a.join(',')).join(' ');return '<svg viewBox="0 0 '+W+' '+H+'" aria-label="Indexed trend chart"><g stroke="#eee8ef" stroke-width="1">'+[0,1,2,3].map(i=>'<line x1="'+p+'" y1="'+(40+i*40)+'" x2="'+(W-p)+'" y2="'+(40+i*40)+'"/>').join('')+'</g><polyline fill="none" stroke="#4a2351" stroke-width="4" points="'+poly+'"/><polyline fill="none" stroke="#e8005a" stroke-width="9" opacity=".08" points="'+poly+'"/>'+pts.map((a,i)=>'<circle cx="'+a[0]+'" cy="'+a[1]+'" r="5" fill="#e8005a"/><text x="'+a[0]+'" y="'+(H-7)+'" text-anchor="middle" font-size="13" fill="#756d79">'+labels[i]+'</text><text x="'+a[0]+'" y="'+(a[1]-10)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#4a2351">'+values[i]+'</text>').join('')+'</svg>'}
+function lineChart(values,labels){const W=560,H=210,p=28,max=Math.max(...values)+5,min=Math.min(...values)-5;const pts=values.map((v,i)=>{const x=p+i*(W-p*2)/(values.length-1),y=H-p-(v-min)*(H-p*2)/(max-min);return [x,y]}),poly=pts.map(a=>a.join(',')).join(' ');return '<svg viewBox="0 0 '+W+' '+H+'" aria-label="Indexed trend chart"><g stroke="#e8edef" stroke-width="1">'+[0,1,2,3].map(i=>'<line x1="'+p+'" y1="'+(40+i*40)+'" x2="'+(W-p)+'" y2="'+(40+i*40)+'"/>').join('')+'</g><polyline fill="none" stroke="#003b5c" stroke-width="4" points="'+poly+'"/><polyline fill="none" stroke="#0076a8" stroke-width="9" opacity=".08" points="'+poly+'"/>'+pts.map((a,i)=>'<circle cx="'+a[0]+'" cy="'+a[1]+'" r="5" fill="#0076a8"/><text x="'+a[0]+'" y="'+(H-7)+'" text-anchor="middle" font-size="13" fill="#6d7579">'+labels[i]+'</text><text x="'+a[0]+'" y="'+(a[1]-10)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#003b5c">'+values[i]+'</text>').join('')+'</svg>'}
 function marketBarChart(m){
   if(!m)return '';
   const max=Math.max(m.current,m.forecast),w1=Math.max(8,Math.round(m.current/max*100)),w2=100;

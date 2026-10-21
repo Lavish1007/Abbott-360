@@ -74,17 +74,17 @@ function pmrReadinessFriction(rows){
     '<rect x="'+(L+plotW/2)+'" y="'+T+'" width="'+(plotW/2)+'" height="'+(plotH/2)+'" rx="8" fill="#fff7fa"/>'+
     '<rect x="'+L+'" y="'+(T+plotH/2)+'" width="'+(plotW/2)+'" height="'+(plotH/2)+'" rx="8" fill="#fafafa"/>'+
     '<rect x="'+(L+plotW/2)+'" y="'+(T+plotH/2)+'" width="'+(plotW/2)+'" height="'+(plotH/2)+'" rx="8" fill="#f5fbf7"/>'+
-    ticks.map(t=>'<line x1="'+x(t)+'" y1="'+T+'" x2="'+x(t)+'" y2="'+(H-B)+'" stroke="#ece5ed" stroke-width="1"/><text x="'+x(t)+'" y="'+(H-B+19)+'" text-anchor="middle" font-size="11" fill="#7d7280">'+t+'</text>').join('')+
-    ticks.map(t=>'<line x1="'+L+'" y1="'+y(t)+'" x2="'+(W-R)+'" y2="'+y(t)+'" stroke="#ece5ed" stroke-width="1"/><text x="'+(L-12)+'" y="'+(y(t)+4)+'" text-anchor="end" font-size="11" fill="#7d7280">'+t+'</text>').join('')+
-    '<line x1="'+(L+plotW/2)+'" y1="'+T+'" x2="'+(L+plotW/2)+'" y2="'+(H-B)+'" stroke="#d5cad7" stroke-width="1.4"/>'+
-    '<line x1="'+L+'" y1="'+(T+plotH/2)+'" x2="'+(W-R)+'" y2="'+(T+plotH/2)+'" stroke="#d5cad7" stroke-width="1.4"/>'+
-    '<text x="'+(L+plotW*.25)+'" y="'+(T+20)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#716575">High friction / lower readiness</text>'+
+    ticks.map(t=>'<line x1="'+x(t)+'" y1="'+T+'" x2="'+x(t)+'" y2="'+(H-B)+'" stroke="#e5eaed" stroke-width="1"/><text x="'+x(t)+'" y="'+(H-B+19)+'" text-anchor="middle" font-size="11" fill="#727b80">'+t+'</text>').join('')+
+    ticks.map(t=>'<line x1="'+L+'" y1="'+y(t)+'" x2="'+(W-R)+'" y2="'+y(t)+'" stroke="#e5eaed" stroke-width="1"/><text x="'+(L-12)+'" y="'+(y(t)+4)+'" text-anchor="end" font-size="11" fill="#727b80">'+t+'</text>').join('')+
+    '<line x1="'+(L+plotW/2)+'" y1="'+T+'" x2="'+(L+plotW/2)+'" y2="'+(H-B)+'" stroke="#cad3d7" stroke-width="1.4"/>'+
+    '<line x1="'+L+'" y1="'+(T+plotH/2)+'" x2="'+(W-R)+'" y2="'+(T+plotH/2)+'" stroke="#cad3d7" stroke-width="1.4"/>'+
+    '<text x="'+(L+plotW*.25)+'" y="'+(T+20)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#677075">High friction / lower readiness</text>'+
     '<text x="'+(L+plotW*.75)+'" y="'+(T+20)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#9c305a">High friction / ready</text>'+
-    '<text x="'+(L+plotW*.25)+'" y="'+(H-B-12)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#716575">Low friction / lower readiness</text>'+
+    '<text x="'+(L+plotW*.25)+'" y="'+(H-B-12)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#677075">Low friction / lower readiness</text>'+
     '<text x="'+(L+plotW*.75)+'" y="'+(H-B-12)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#27724c">Low friction / ready</text>'+
-    rows.map((r,i)=>'<g><title>'+esc(r.persona)+' — Readiness '+r.ready+'%, friction '+r.friction+'%</title><circle cx="'+x(r.ready)+'" cy="'+y(r.friction)+'" r="15" fill="#fff" stroke="#e8005a" stroke-width="3"/><circle cx="'+x(r.ready)+'" cy="'+y(r.friction)+'" r="11" fill="#e8005a"/><text x="'+x(r.ready)+'" y="'+(y(r.friction)+4)+'" text-anchor="middle" font-size="11" font-weight="900" fill="#fff">'+(i+1)+'</text></g>').join('')+
-    '<text x="'+(L+plotW/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="12" font-weight="750" fill="#675c6a">Readiness →</text>'+
-    '<text x="16" y="'+(T+plotH/2)+'" transform="rotate(-90 16 '+(T+plotH/2)+')" text-anchor="middle" font-size="12" font-weight="750" fill="#675c6a">Implementation friction →</text>'+
+    rows.map((r,i)=>'<g><title>'+esc(r.persona)+' — Readiness '+r.ready+'%, friction '+r.friction+'%</title><circle cx="'+x(r.ready)+'" cy="'+y(r.friction)+'" r="15" fill="#fff" stroke="#0076a8" stroke-width="3"/><circle cx="'+x(r.ready)+'" cy="'+y(r.friction)+'" r="11" fill="#0076a8"/><text x="'+x(r.ready)+'" y="'+(y(r.friction)+4)+'" text-anchor="middle" font-size="11" font-weight="900" fill="#fff">'+(i+1)+'</text></g>').join('')+
+    '<text x="'+(L+plotW/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="12" font-weight="750" fill="#5d666a">Readiness →</text>'+
+    '<text x="16" y="'+(T+plotH/2)+'" transform="rotate(-90 16 '+(T+plotH/2)+')" text-anchor="middle" font-size="12" font-weight="750" fill="#5d666a">Implementation friction →</text>'+
     '</svg></div><div class="pmr-rf-legend">'+rows.map((r,i)=>'<article><span>'+(i+1)+'</span><div><strong>'+esc(r.persona)+'</strong><small>Readiness '+r.ready+'% · Friction '+r.friction+'%</small></div></article>').join('')+'</div></div>';
 }
 function pmrThemeTable(themes){
@@ -184,7 +184,7 @@ function renderQuantPage(){
   const readiness=(v2.voc?.readiness||[]).filter(x=>s.persona==="All personas"||x.persona===s.persona);
   const outcomes=["Overall experience","Adoption intent","Future preference","Digital readiness","Recommendation / advocacy"];
   $('breadcrumbSmall').textContent='Primary Market Research / Quantitative survey Analysis';$('breadcrumbTitle').textContent=currentDomain+' — Quantitative survey';
-  $('pageContent').innerHTML=pmrPageHead("Quantitative survey analysis",'A project-style analytical workspace for <b>'+esc(currentDomain)+'</b>, showing how Evalueserve could go beyond standard survey charting with dynamic cross-tabs, derived segments, drivers, subgroup deltas, open-text coding and action-oriented synthesis.')+
+  $('pageContent').innerHTML=pmrPageHead("Quantitative survey analysis",'A project-style analytical workspace for <b>'+esc(currentDomain)+'</b>, showing how Abbott could go beyond standard survey charting with dynamic cross-tabs, derived segments, drivers, subgroup deltas, open-text coding and action-oriented synthesis.')+
     '<section class="pmr-filter-shell five">'+pmrSelect("Survey project","project",projects.map(p=>({value:p.id,label:p.name})),s.project,"quant-surveys")+pmrSelect("Persona","persona",["All personas",...cfg.personas],s.persona,"quant-surveys")+pmrSelect("Region","region",["All regions",...cfg.regions],s.region,"quant-surveys")+pmrSelect("Care setting","setting",["All settings",...cfg.settings],s.setting,"quant-surveys")+pmrSelect("Outcome","outcome",outcomes,s.outcome,"quant-surveys")+'</section>'+
     '<section class="section">'+pmrKpis([
       {label:"Filtered analytical base",value:"n="+filteredN,note:filteredN===project.sample?"Full survey":"Current crosstab cut"},

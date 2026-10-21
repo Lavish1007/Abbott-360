@@ -79,10 +79,10 @@ function pmrScatter(rows,xKey,yKey,xLabel,yLabel){
   if(!rows.length)return '<div class="ci-empty">No data for this view.</div>';
   const W=650,H=360,p=52;
   return '<div class="pmr-scatter"><svg viewBox="0 0 '+W+' '+H+'">'+
-    '<line x1="'+p+'" y1="'+(H-p)+'" x2="'+(W-p)+'" y2="'+(H-p)+'" stroke="#cfc4d1"/><line x1="'+p+'" y1="'+p+'" x2="'+p+'" y2="'+(H-p)+'" stroke="#cfc4d1"/>'+
-    '<line x1="'+(W/2)+'" y1="'+p+'" x2="'+(W/2)+'" y2="'+(H-p)+'" stroke="#e9e1ea" stroke-dasharray="5 5"/><line x1="'+p+'" y1="'+(H/2)+'" x2="'+(W-p)+'" y2="'+(H/2)+'" stroke="#e9e1ea" stroke-dasharray="5 5"/>'+
-    rows.map((r,i)=>{const x=p+(Number(r[xKey])-30)/70*(W-2*p),y=H-p-(Number(r[yKey])-30)/70*(H-2*p);return '<g><circle cx="'+x+'" cy="'+y+'" r="11" fill="#e8005a" fill-opacity=".16" stroke="#e8005a" stroke-width="2"/><circle cx="'+x+'" cy="'+y+'" r="4" fill="#e8005a"/><text x="'+x+'" y="'+(y-15)+'" text-anchor="middle" font-size="10" font-weight="800" fill="#4a2351">'+esc(r.theme||r.label||("T"+(i+1)))+'</text></g>'}).join('')+
-    '<text x="'+(W/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="11" fill="#756b78">'+esc(xLabel)+' →</text><text x="16" y="'+(H/2)+'" transform="rotate(-90 16 '+(H/2)+')" text-anchor="middle" font-size="11" fill="#756b78">'+esc(yLabel)+' →</text>'+
+    '<line x1="'+p+'" y1="'+(H-p)+'" x2="'+(W-p)+'" y2="'+(H-p)+'" stroke="#c4cdd1"/><line x1="'+p+'" y1="'+p+'" x2="'+p+'" y2="'+(H-p)+'" stroke="#c4cdd1"/>'+
+    '<line x1="'+(W/2)+'" y1="'+p+'" x2="'+(W/2)+'" y2="'+(H-p)+'" stroke="#e1e7ea" stroke-dasharray="5 5"/><line x1="'+p+'" y1="'+(H/2)+'" x2="'+(W-p)+'" y2="'+(H/2)+'" stroke="#e1e7ea" stroke-dasharray="5 5"/>'+
+    rows.map((r,i)=>{const x=p+(Number(r[xKey])-30)/70*(W-2*p),y=H-p-(Number(r[yKey])-30)/70*(H-2*p);return '<g><circle cx="'+x+'" cy="'+y+'" r="11" fill="#0076a8" fill-opacity=".16" stroke="#0076a8" stroke-width="2"/><circle cx="'+x+'" cy="'+y+'" r="4" fill="#0076a8"/><text x="'+x+'" y="'+(y-15)+'" text-anchor="middle" font-size="10" font-weight="800" fill="#003b5c">'+esc(r.theme||r.label||("T"+(i+1)))+'</text></g>'}).join('')+
+    '<text x="'+(W/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="11" fill="#6b7478">'+esc(xLabel)+' →</text><text x="16" y="'+(H/2)+'" transform="rotate(-90 16 '+(H/2)+')" text-anchor="middle" font-size="11" fill="#6b7478">'+esc(yLabel)+' →</text>'+
     '</svg></div>';
 }
 function pmrThemeHeatmap(personas,themes,state,mode){

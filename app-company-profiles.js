@@ -74,9 +74,9 @@ function cpRevenueChart(profile){
   const W=700,H=250,pL=46,pR=22,pT=30,pB=42,vals=rows.map(r=>Number(r.value)),min=Math.min(...vals)*.94,max=Math.max(...vals)*1.06;
   const x=i=>pL+i*(W-pL-pR)/(rows.length-1),y=v=>pT+(max-v)*(H-pT-pB)/(max-min||1),pts=rows.map((r,i)=>[x(i),y(Number(r.value))]);
   return '<div class="cp-revenue-chart"><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Revenue trend">'+
-    [0,1,2,3].map(i=>{const yy=pT+i*(H-pT-pB)/3;return '<line x1="'+pL+'" y1="'+yy+'" x2="'+(W-pR)+'" y2="'+yy+'" stroke="#eee8ef"/>'}).join('')+
-    '<polyline points="'+pts.map(p=>p.join(",")).join(" ")+'" fill="none" stroke="#4a2351" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+
-    pts.map((pt,i)=>'<circle cx="'+pt[0]+'" cy="'+pt[1]+'" r="5" fill="#e8005a" stroke="#fff" stroke-width="2"/><text x="'+pt[0]+'" y="'+(pt[1]-10)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#4a2351">'+rows[i].value.toFixed(2)+'</text><text x="'+pt[0]+'" y="'+(H-13)+'" text-anchor="middle" font-size="11" font-weight="700" fill="#756b78">'+rows[i].year+'</text>').join('')+
+    [0,1,2,3].map(i=>{const yy=pT+i*(H-pT-pB)/3;return '<line x1="'+pL+'" y1="'+yy+'" x2="'+(W-pR)+'" y2="'+yy+'" stroke="#e8edef"/>'}).join('')+
+    '<polyline points="'+pts.map(p=>p.join(",")).join(" ")+'" fill="none" stroke="#003b5c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+
+    pts.map((pt,i)=>'<circle cx="'+pt[0]+'" cy="'+pt[1]+'" r="5" fill="#0076a8" stroke="#fff" stroke-width="2"/><text x="'+pt[0]+'" y="'+(pt[1]-10)+'" text-anchor="middle" font-size="11" font-weight="800" fill="#003b5c">'+rows[i].value.toFixed(2)+'</text><text x="'+pt[0]+'" y="'+(H-13)+'" text-anchor="middle" font-size="11" font-weight="700" fill="#6b7478">'+rows[i].year+'</text>').join('')+
     '</svg><div class="cp-chart-foot"><span>Currency: '+esc(f.currency||"Reported")+'</span><span>Company / group revenue unless specifically labeled otherwise.</span></div></div>';
 }
 function cpGrowthBars(profile){

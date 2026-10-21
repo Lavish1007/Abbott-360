@@ -73,10 +73,10 @@ function executiveGrowthChart(rows){
   const poly=pts.map(p=>p.join(',')).join(' ');
   const area='M '+pts[0][0]+' '+(H-pB)+' L '+pts.map(p=>p.join(' ')).join(' L ')+' L '+pts[pts.length-1][0]+' '+(H-pB)+' Z';
   return '<div class="exec-chart-wrap"><svg class="exec-growth-svg" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Illustrative year-on-year market growth">'+
-    '<defs><linearGradient id="execArea" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#e8005a" stop-opacity=".22"/><stop offset="100%" stop-color="#e8005a" stop-opacity=".02"/></linearGradient></defs>'+
-    [0,1,2,3].map(i=>{const yy=pT+i*(H-pT-pB)/3;const val=(max-i*(max-min)/3).toFixed(1);return '<line x1="'+pL+'" y1="'+yy+'" x2="'+(W-pR)+'" y2="'+yy+'" stroke="#eee7ef"/><text x="'+(pL-11)+'" y="'+(yy+4)+'" text-anchor="end" font-size="12" fill="#897e8c">$'+val+'B</text>'}).join('')+
-    '<path d="'+area+'" fill="url(#execArea)"/><polyline points="'+poly+'" fill="none" stroke="#4a2351" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>'+
-    pts.map((pt,i)=>'<circle cx="'+pt[0]+'" cy="'+pt[1]+'" r="5.5" fill="#e8005a" stroke="#fff" stroke-width="3"/><text x="'+pt[0]+'" y="'+(pt[1]-13)+'" text-anchor="middle" font-size="12" font-weight="800" fill="#4a2351">$'+rows[i].size.toFixed(1)+'B</text><text x="'+pt[0]+'" y="'+(H-30)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#675c6a">'+rows[i].year+'</text><text x="'+pt[0]+'" y="'+(H-11)+'" text-anchor="middle" font-size="11" fill="#9a8f9d">'+(rows[i].growth==null?'Base':rows[i].growth.toFixed(1)+'% YoY')+'</text>').join('')+
+    '<defs><linearGradient id="execArea" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0076a8" stop-opacity=".22"/><stop offset="100%" stop-color="#0076a8" stop-opacity=".02"/></linearGradient></defs>'+
+    [0,1,2,3].map(i=>{const yy=pT+i*(H-pT-pB)/3;const val=(max-i*(max-min)/3).toFixed(1);return '<line x1="'+pL+'" y1="'+yy+'" x2="'+(W-pR)+'" y2="'+yy+'" stroke="#e7ecef"/><text x="'+(pL-11)+'" y="'+(yy+4)+'" text-anchor="end" font-size="12" fill="#7e878c">$'+val+'B</text>'}).join('')+
+    '<path d="'+area+'" fill="url(#execArea)"/><polyline points="'+poly+'" fill="none" stroke="#003b5c" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>'+
+    pts.map((pt,i)=>'<circle cx="'+pt[0]+'" cy="'+pt[1]+'" r="5.5" fill="#0076a8" stroke="#fff" stroke-width="3"/><text x="'+pt[0]+'" y="'+(pt[1]-13)+'" text-anchor="middle" font-size="12" font-weight="800" fill="#003b5c">$'+rows[i].size.toFixed(1)+'B</text><text x="'+pt[0]+'" y="'+(H-30)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#5d666a">'+rows[i].year+'</text><text x="'+pt[0]+'" y="'+(H-11)+'" text-anchor="middle" font-size="11" fill="#8f989d">'+(rows[i].growth==null?'Base':rows[i].growth.toFixed(1)+'% YoY')+'</text>').join('')+
     '</svg></div>';
 }
 
@@ -99,7 +99,7 @@ function executiveRegionalMap(regions){
 }
 
 function executiveDonut(items){
-  const colors=['#4a2351','#e8005a','#8c5a92','#f06b9d','#6e4b72','#cba7cd','#8f8791','#d9ccd9'];
+  const colors=['#003b5c','#0076a8','#5a8092','#f06b9d','#4b6572','#b4c5cd','#878e91','#ccd5d9'];
   let a=0;
   const grad=items.map((it,i)=>{const s=a;a+=it.share;return colors[i%colors.length]+' '+s+'% '+a+'%'}).join(',');
   return '<div class="exec-donut-layout"><div class="exec-donut" style="background:conic-gradient('+grad+')"><div><b>100%</b><span>Illustrative segment split</span></div></div><div class="exec-legend">'+items.map((it,i)=>'<div><i style="background:'+colors[i%colors.length]+'"></i><span><strong>'+esc(it.name)+'</strong><small><b>'+it.share+'%</b> · '+esc(it.detail)+'</small></span></div>').join('')+'</div></div>';
@@ -156,7 +156,7 @@ function renderIndustryOverview(){
   if(!ex){$('pageContent').innerHTML='<div class="empty-search">Industry overview research data is not available for this domain.</div>';return}
   const players=ex.players||[],signals=(en.signals||[]);
   activeExecutiveTab='overview';
-  $('breadcrumbSmall').textContent='MedTech 360 / Industry Overview';
+  $('breadcrumbSmall').textContent='Abbott 360 / Industry Overview';
   $('breadcrumbTitle').textContent=currentDomain+' — Industry Overview';
 
   const totalGrowth=((ex.yoy[ex.yoy.length-1].size/ex.yoy[0].size-1)*100).toFixed(0);
@@ -165,7 +165,7 @@ function renderIndustryOverview(){
   const top2Share=players.slice().sort((a,b)=>b.share-a.share).slice(0,2).reduce((s,p)=>s+p.share,0);
 
   $('pageContent').innerHTML=
-    '<section class="hero executive-hero"><div class="hero-grid"><div><div class="kicker" style="color:#f3a4c0">Industry Overview • '+esc(currentDomain)+'</div><h1>Industry intelligence overview</h1><p>'+esc(ex.overview)+'</p></div>'+
+    '<section class="hero executive-hero"><div class="hero-grid"><div><div class="kicker" style="color:#8ee1f5">Industry Overview • '+esc(currentDomain)+'</div><h1>Industry intelligence overview</h1><p>'+esc(ex.overview)+'</p></div>'+
     '<div class="hero-stats"><div class="hero-stat"><b>'+totalGrowth+'%</b><span>Illustrative 2022–28 market expansion</span></div><div class="hero-stat"><b>'+latestGrowth.toFixed(1)+'%</b><span>2028 YoY model growth</span></div><div class="hero-stat"><b>'+esc(topRegion.name)+'</b><span>Highest opportunity index</span></div><div class="hero-stat"><b>'+top2Share+'%</b><span>Top-2 placeholder share</span></div></div></div></section>'+
     executiveTabs()+
 
