@@ -244,3 +244,7 @@ Local file selection is browser-session only in the static frontend. Connector b
 Abbott 360 uses the Abbott Intelligence Hub identity, a blue-and-navy light theme, and locally hosted Inter typography. Shared styling lives in `styles-abbott.css`; chart colors are aligned in the renderers. The Abbott symbol and font provenance are documented in `assets/README.md`. Existing CI, PMR, search, industry analytics, and knowledge repository views share the theme; separate profile, settings, and admin screens are not implemented in this prototype.
 
 Run locally with `python3 -m http.server 8000` (Windows: `py -m http.server 8000`) from this directory. Open `http://localhost:8000`.
+
+## Windows launcher
+
+Double-click `start-server.bat` in the project folder. It starts a local server and automatically opens `http://localhost:8000` in your default browser. Keep the server window open; close it or press Ctrl+C to stop. Python 3 must be installed; the launcher checks both `py -3` and `python`. Stop any previous server using port 8000 before launching.
